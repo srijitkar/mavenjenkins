@@ -1,41 +1,35 @@
-pipeline 
-{
+pipeline {
     agent any
 
-    stages 
-    {
-        stage('Build') 
-        {
-            steps 
-            {
-                echo 'Build App'
+    stages {
+        stage('Build') {
+            steps {
+                echo 'Hello World'
             }
         }
-
-        stage('Test') 
-        {
-            steps 
-            {
-                echo 'Test App'
+		
+		stage('Test') {
+            steps {
+                echo 'Hello World'
             }
         }
-
-        stage('Deploy') 
-        {
-            steps 
-            {
-                echo 'Deploy App'
+		
+		stage('Deploy') {
+            steps {
+                echo 'Hello World'
             }
         }
     }
+	
+	post{
+	
+	always {
+	emailext body: '''Hi,
 
-    post
-    {
+Please find the status report.
 
-    	always
-    	{
-    		emailext body: 'Summary', subject: 'Pipeline Status', to: 'selenium3bymukesh@gmail.com'
-    	}
-
-    }
+Regards,
+Admin''', subject: 'Status Report', to: 'swarnva123k@gmail.com'
+	}
+	}
 }
